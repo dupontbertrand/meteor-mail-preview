@@ -4,10 +4,11 @@ Package.describe({
   summary: 'Dev-mode mail preview UI — view captured emails at /__meteor_mail__',
   git: 'https://github.com/dupontbertrand/meteor-mail-preview',
   documentation: 'README.md',
+  devOnly: true,
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom(['2.2', '3.0']);
+  api.versionsFrom('3.4');
   api.use('ecmascript', 'server');
   api.use('logging', 'server');
   api.use('email', 'server');

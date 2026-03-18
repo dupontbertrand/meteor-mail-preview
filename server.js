@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
 import { WebApp } from 'meteor/webapp';
-import { Log } from 'meteor/logging';
 
 // Only active in development mode
 if (Meteor.isDevelopment) {
@@ -305,5 +304,5 @@ function showTab(name, btn) {
     next();
   });
 
-  Log.info('Mail preview UI available at ' + ROUTE_PREFIX);
+  console.log(`=> Mail preview at ${Meteor.absoluteUrl()}${ROUTE_PREFIX.slice(1)}`);
 }

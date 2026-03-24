@@ -1,6 +1,6 @@
 Package.describe({
   name: 'dupontbertrand:mail-preview',
-  version: '1.1.0',
+  version: '1.2.0',
   summary: 'Dev-mode mail preview UI — view captured emails at /__meteor_mail__',
   git: 'https://github.com/dupontbertrand/meteor-mail-preview',
   documentation: 'README.md',

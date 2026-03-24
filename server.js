@@ -238,7 +238,7 @@ setInterval(poll, 2000);
   ${hasHtml ? '<button class="tab" onclick="showTab(\'source\',this)">HTML Source</button>' : ''}
 </div>
 ${hasHtml ? `<div id="tab-html" class="tab-content active">
-  <iframe sandbox="allow-same-origin allow-popups allow-top-navigation" srcdoc="${escSrcdoc(mail.html)}"></iframe>
+  <iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation" srcdoc="${escSrcdoc(mail.html)}"></iframe>
 </div>` : ''}
 ${hasText ? `<div id="tab-text" class="tab-content${!hasHtml ? ' active' : ''}">
   <pre class="text-body">${esc(mail.text)}</pre>

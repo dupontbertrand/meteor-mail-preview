@@ -12,7 +12,7 @@ meteor add dupontbertrand:mail-preview
 
 That's it. No configuration needed.
 
-This is a `devOnly` package — it is **automatically excluded from production builds**. Zero overhead in production, no need to remove it before deploying.
+This is a `debugOnly` package: it is **left out of production builds** (`meteor build`, `meteor deploy`, `meteor run --production`). Zero overhead in production, no need to remove it before deploying.
 
 ## Usage
 
@@ -40,9 +40,9 @@ This is a `devOnly` package — it is **automatically excluded from production b
 
 The package uses `Email.hookSend()` to intercept outgoing emails and store them in memory. A middleware serves the preview UI via `WebApp.rawConnectHandlers`.
 
-- **Dev mode only** — the entire package is a no-op in production (`Meteor.isDevelopment` guard + `devOnly: true`)
+- **Dev mode only** — the package is left out of production builds (`debugOnly: true`), and its code is a no-op outside development (`Meteor.isDevelopment` guard)
 - **No SMTP needed** — emails are captured before they reach any transport
-- **No dependencies** — uses only Meteor core packages (`email`, `webapp`, `ecmascript`, `logging`)
+- **No dependencies** — uses only Meteor core packages (`email`, `webapp`, `ecmascript`)
 - **Up to 50 mails** stored in memory (oldest are evicted)
 
 ## Compatibility
@@ -50,6 +50,12 @@ The package uses `Email.hookSend()` to intercept outgoing emails and store them 
 - Meteor 3.4+
 - Works alongside `MAIL_URL` — emails are still sent normally, the hook just captures a copy
 - Works with `accounts-password` emails (verification, reset password, enrollment)
+
+## Changelog
+
+### 1.2.1
+
+The package is now `debugOnly` instead of `devOnly`. Since Meteor 3.4, and at least up to 3.6-rc.0, `devOnly` is not applied to a package whose name has an author prefix, so versions 1.2.0 and earlier were still shipped in production builds. They stayed inert there, thanks to their `Meteor.isDevelopment` guard; upgrading removes them from the bundle.
 
 ## License
 

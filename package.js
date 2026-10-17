@@ -1,10 +1,13 @@
 Package.describe({
   name: 'dupontbertrand:mail-preview',
-  version: '1.2.0',
+  version: '1.2.1',
   summary: 'Dev-mode mail preview UI — view captured emails at /__meteor_mail__',
   git: 'https://github.com/dupontbertrand/meteor-mail-preview',
   documentation: 'README.md',
-  devOnly: true,
+  // debugOnly, not devOnly: since Meteor 3.4, and at least up to 3.6-rc.0, devOnly
+  // is not applied to a package with an author prefix, which still ships in
+  // production builds.
+  debugOnly: true,
 });
 
 Package.onUse(function (api) {
